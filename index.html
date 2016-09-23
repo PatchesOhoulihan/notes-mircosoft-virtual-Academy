@@ -106,30 +106,49 @@
             <h3 lang="en">Selectors</h3>
             <p>Selectors are the core Concept of jQuery. <mark>Use the $ Dollarsign followed by a CSS Selector example: <code>$('CSS Selector')</code></mark></p>
             <p>Select multiple Elements from the DOM: <code>$('selector1, selector2, selectorN') or $('element[attribute='some'][attribute="other"]')</code></p>
+            <p>Select a one Element outof many Elements of the same kind: <code>$('selector')[number of the Element in the DOM Tree]</code> OR <code>$('slecetor').get(Number of the Element in the DOM Tree)</code></p>
             <p>Qjuery has Selectors for all kind of Types</p>
             <ul>
               <li>
                 <p>Elements: by id, name etc</p>
               </li>
               <li>
-                <p>Attributes</p>
+                <h3>Attributes</h3>
+                <ul>
+                  <li>$("selector[attr]")  Element has this Attribute</li>
+                  <li>$("selector[attribute='attrvalue']") Element has this Attribute with this Value</li>
+                  <li>$("selector[attribute^'attrvalue']") Element Attribute Value begins with this Value</li>
+                  <li>$("selector[attribute$'attrvalue']") Element Attribute Value ends with this Value</li>
+                  <li>$("selector[attribute*'attrvalue']") Element Attribute Value contains this Value</li>
+                </ul>
               </li>
               <li>
                 <p>Form Elements</p>
               </li>
               <li>
-                <p>Heirarchy(Parent, Child, Decendant, Sibling)</p>
+                <h3>Hierarchy(Parent, Child, Decendant, Sibling)</h3>
+                <ul>
+                  <li>$("ancestor descendant")</li>
+                  <li>$("parent elem > child elem")</li>
+                  <li>$("prev elem + next elem")</li>
+                  <li>$("prev silbling + next sibling")TYPO!!!</li>
+                </ul>
               </li>
               <li>
                 <p>Elements by state(enabled, disabled, hidden, selected)</p>
               </li>
               <li>
-                <p>Position</p>
+                <h3>Position</h3>
+                <ul>
+                  <li>$("element:first")</li>
+                  <li>$("element:last")</li>
+                </ul>
               </li>
               <li>
                 <p>Class</p>
               </li>
             </ul>
+
         </article>
       </section>
     </main>
