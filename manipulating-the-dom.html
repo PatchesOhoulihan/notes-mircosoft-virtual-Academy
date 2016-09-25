@@ -13,15 +13,16 @@
 
 </head>
 <body>
-    <header role="banner" class="pageheader">
-        <h1>Jquery Jumpstart</h1>
+    <div id="site-wrapper">
+        <header role="banner" class="pageheader">
+        <h1>Manipulating the DOM</h1>
     </header>
     <nav role="navigation" id="nav" class="navmain">
       <h2>Navigation</h2>
       <ul>
-        <li><a href="#">jQuery 101</a></li>
+        <li><a href="index.html">jQuery 101</a></li>
         <li><a href="selection.html">Selection</a></li>
-        <li><a href="manipulating-the-dom.html">Manipulating the DOM</a></li>
+        <li><a href="#">Manipulating the DOM</a></li>
         <li><a href="events.html">Events</a></li>
         <li><a href="effects.html">Effects</a></li>
         <li><a href="ajax-and-async.html">Ajax and Async</a></li>
@@ -30,134 +31,6 @@
     </nav>
 
     <main role="main" aria-labeledby="content">
-      <section id="content">
-        <header>
-          <h2>1. jQuery 101</h2>
-          <p>A little 101 about the general stuff of jquery. Jquery is an utility Library that helps you write code with more comfortable than an plan Javascript.</p>
-          <img srcset="" src="" alt="">
-        </header>
-        <article id="a1">
-          <h3 lang="en">1.1 What is jquery</h3>
-          <p>Makes the Dom stink link. Advances</p>
-          <ul>
-            <li>
-              <p>Fast, small(32k), open, feature-rich, has alot of constributers and you can be be one too.</p>
-            </li>
-            <li>
-              <p>HTML document traversal and manipulation</p>
-            </li>
-            <li>
-              <p>Event handling</p>
-            </li>
-            <li>
-              <p>Animation</p>
-            </li>
-            <li>
-              <p>Ajax</p>
-            </li>
-            <li>
-              <p>Ver compatible</p>
-            </li>
-            <li>
-              <p>Extensible</p>
-            </li>
-            <li>
-              <p>Cross browser</p>
-            </li>
-          </ul>
-          <p>If you get the Library from a popular cdn there is a high possiblity that the user has already downloaded it.</p>
-          <h3>1.2 When to use jquery?</h3>
-          <ul>
-            <li>
-              <p>Websites</p>
-            </li>
-            <li>
-              <p>Small to medium-sized web apps</p>
-            </li>
-            <li>
-              <p>Enhancement of brown-field(opposite of green-field application aka Legacycode) web applications</p>
-            </li>
-          </ul>
-          <h3>1.3 When not to use?</h3>
-          <p>If you want to build a spa(single page application) for that Angular is the better option.</p>
-          <p>Don't use it if you only need one or two Features out of it.</p>
-        </article>
-        <article>
-          <h3 lang="en">1.4 Getting started</h3>
-          <p>Downloading from the jquery cdn: <a href="http://jquery.com/download/#using-jquery-with-a-cdn">here</a></p>
-          <p>Host jquery on your own webspace: <a href="http://jquery.com/download/#jquery">here</a></p>
-          <p>In order to use jquery effectivly you have to wait until the DOM is loaded completely. <mark>to assure that use the .ready() function</mark></p>
-          <pre>
-              $(document).ready(function(){
-                //your Code here
-              });
-          </pre>
-          <p>Version History: <a href="https://en.wikipedia.org/wiki/JQuery#History"> here</a></p>
-        </article>
-      </section>
-      <section>
-        <header>
-          <h2>2. Selection</h2>
-          <p>Gives some Examples about types of selectors and how to use them.</p>
-          <img srcset="" src="" alt="">
-        </header>
-        <article>
-            <h3 lang="en">2.1 Selectors</h3>
-            <p>Selectors are the core Concept of jQuery. <mark>Use the $ Dollarsign followed by a CSS Selector example: <code>$('CSS Selector')</code></mark></p>
-            <p>Select multiple Elements from the DOM: <code>$('selector1, selector2, selectorN') or $('element[attribute='some'][attribute="other"]')</code></p>
-            <p>Select a one Element outof many Elements of the same kind: <code>$('selector')[number of the Element in the DOM Tree]</code> OR <code>$('slecetor').get(Number of the Element in the DOM Tree)</code></p>
-            <p>Qjuery has Selectors for all kind of Types:</p>
-            <ul>
-              <li>
-                <h4>Elements: by id, name etc</h4>
-              </li>
-              <li>
-                <h4>Attributes</h4>
-                <ul>
-                  <li>$("selector[attr]")  Element has this Attribute</li>
-                  <li>$("selector[attribute='attrvalue']") Element has this Attribute with this Value</li>
-                  <li>$("selector[attribute^'attrvalue']") Element Attribute Value begins with this Value</li>
-                  <li>$("selector[attribute$'attrvalue']") Element Attribute Value ends with this Value</li>
-                  <li>$("selector[attribute*'attrvalue']") Element Attribute Value contains this Value</li>
-                </ul>
-              </li>
-              <li>
-                <h4>Form Elements</h4>
-              </li>
-              <li>
-                <h4>Hierarchy(Parent, Child, Decendant, Sibling)</h4>
-                <ul>
-                  <li>$("ancestor descendant")</li>
-                  <li>$("parent elem > child elem")</li>
-                  <li>$("prev elem + next elem")</li>
-                  <li>$("prev silbling + next sibling")TYPO!!!</li>
-                </ul>
-              </li>
-              <li>
-                <h4>Elements by state(enabled, disabled, hidden, selected)</h4>
-              </li>
-              <li>
-                <h4>Position</h4>
-                <ul>
-                  <li>$("element:first") Selects the first Element of a kind</li>
-                  <li>$("element:last") Selects the last Element of a kind</li>
-                </ul>
-              </li>
-              <li>
-                <h4>Class</h4>
-              </li>
-            </ul>
-            </article>
-            <article>
-              <h3>2.2 JQuery filters</h3>
-              <p>Selectors in JQuery following the CSS Syntax for selecting Things Filters are more like jquerys own thing</p>
-              <p><code>$(:button)</code> Selects all buttons <br> <code>$(":contains(text)")</code> Selects all Elements with the particular Text. <br> <code>$(':not(selector)')</code>Everything that is not selected this way.</p>
-            </article>
-            <article>
-              <h3>2.3 Chaining</h3>
-              <p>Allows you to run multiple commands on wrapped set while only accessing those DOM elements once, like this $(selector).method1().method2() <br>Example: <code>$('p').css('background-color','red').css('color','green')</code></p>
-            </article>
-      </section>
       <section>
         <header>
           <h2>3. DOM Manipulation</h2>
@@ -318,53 +191,6 @@
           </ul>
         </article>
       </section>
-      <section>
-        <header>
-          <h2>4. Events</h2>
-          <p>A little 101 about the general stuff of jquery</p>
-          <img srcset="" src="" alt="">
-        </header>
-        <article>
-          <h3>4.1 Attachment and the Event Object</h3>
-          <p>Events give you the opportunity to respond to particular Events in the Browser. JQuery purpose is to make responding to such Event musch easier than plain Javascript. But remember it can only do what Javascript can do, but much more comfortable.</p>
-          <h4>Attaching to Events</h4>
-          <ul>
-            <li>
-              <p><code>.on() and .off()</code> New attaching Methods after the big overhaul of version 1.7 so they're the most important!!</p>
-            </li>
-            <li>
-              <p><code>.bind() and .unbind()</code> legacy Methodes before version 1.7</p>
-            </li>
-            <li>
-              <p><code>.delegate() and .undelegated()</code> legacy Methodes before version 1.7</p>
-            </li>
-            <li>
-              <p><code>.one()</code> legacy Methodes before version 1.7</p>
-            </li>
-            <li>
-              <p><code>.live() and .die()</code> legacy Methodes before version 1.7</p>
-            </li>
-            <li>
-              <p><code>.trigger() and .triggerHandler()</code></p>
-            </li>
-          </ul>
-        </article>
-        <article>
-          <h3>4.2 Browser Events</h3>
-        </article>
-        <article>
-          <h3>4.3 Document Loading Events</h3>
-        </article>
-        <article>
-          <h3>4.4 Form Events</h3>
-        </article>
-        <article>
-          <h3>4.5 Keyboard Events</h3>
-        </article>
-        <article>
-          <h3>4.6 Mouse Events</h3>
-        </article>
-      </section>
     </main>
 
     <aside role="complementary" id="linklisten" class="linklisten">
@@ -384,6 +210,6 @@
         <small>Copyright &copy; <time datetime="2016">2016</time><a href="#">Impressum</a></small>
         <address><p>NAME | Straße |  PLZ Ort  |  LAND</p></address>
     </footer>
-
+    </div>
 </body>
 </html>

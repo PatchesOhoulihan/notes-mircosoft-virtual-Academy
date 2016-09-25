@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+
+    <meta name="description" content="Workshop HTML...">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link href="css/normalize.css" rel="stylesheet" media="all">
+    <link href="css/master.css" rel="stylesheet" media="all">
+    <!--[if lt IE 9]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
+
+</head>
+<body>
+    <div id="site-wrapper">
+        <header role="banner" class="pageheader">
+        <h1>Selection</h1>
+    </header>
+    <nav role="navigation" id="nav" class="navmain">
+      <h2>Navigation</h2>
+      <ul>
+        <li><a href="index.html">jQuery 101</a></li>
+        <li><a href="#">Selection</a></li>
+        <li><a href="manipulating-the-dom.html">Manipulating the DOM</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="effects.html">Effects</a></li>
+        <li><a href="ajax-and-async.html">Ajax and Async</a></li>
+        <li><a href="libraries.html">Libraries</a></li>                
+      </ul>
+    </nav>
+
+    <main role="main" aria-labeledby="content">
+      <section>
+        <header>
+          <h2>2. Selection</h2>
+          <p>Gives some Examples about types of selectors and how to use them.</p>
+          <img srcset="" src="" alt="">
+        </header>
+        <article>
+            <h3 lang="en">2.1 Selectors</h3>
+            <p>Selectors are the core Concept of jQuery. <mark>Use the $ Dollarsign followed by a CSS Selector example: <code>$('CSS Selector')</code></mark></p>
+            <p>Select multiple Elements from the DOM: <code>$('selector1, selector2, selectorN') or $('element[attribute='some'][attribute="other"]')</code></p>
+            <p>Select a one Element outof many Elements of the same kind: <code>$('selector')[number of the Element in the DOM Tree]</code> OR <code>$('slecetor').get(Number of the Element in the DOM Tree)</code></p>
+            <p>Qjuery has Selectors for all kind of Types:</p>
+            <ul>
+              <li>
+                <h4>Elements: by id, name etc</h4>
+              </li>
+              <li>
+                <h4>Attributes</h4>
+                <ul>
+                  <li>$("selector[attr]")  Element has this Attribute</li>
+                  <li>$("selector[attribute='attrvalue']") Element has this Attribute with this Value</li>
+                  <li>$("selector[attribute^'attrvalue']") Element Attribute Value begins with this Value</li>
+                  <li>$("selector[attribute$'attrvalue']") Element Attribute Value ends with this Value</li>
+                  <li>$("selector[attribute*'attrvalue']") Element Attribute Value contains this Value</li>
+                </ul>
+              </li>
+              <li>
+                <h4>Form Elements</h4>
+              </li>
+              <li>
+                <h4>Hierarchy(Parent, Child, Decendant, Sibling)</h4>
+                <ul>
+                  <li>$("ancestor descendant")</li>
+                  <li>$("parent elem > child elem")</li>
+                  <li>$("prev elem + next elem")</li>
+                  <li>$("prev silbling + next sibling")TYPO!!!</li>
+                </ul>
+              </li>
+              <li>
+                <h4>Elements by state(enabled, disabled, hidden, selected)</h4>
+              </li>
+              <li>
+                <h4>Position</h4>
+                <ul>
+                  <li>$("element:first") Selects the first Element of a kind</li>
+                  <li>$("element:last") Selects the last Element of a kind</li>
+                </ul>
+              </li>
+              <li>
+                <h4>Class</h4>
+              </li>
+            </ul>
+            </article>
+            <article>
+              <h3>2.2 JQuery filters</h3>
+              <p>Selectors in JQuery following the CSS Syntax for selecting Things Filters are more like jquerys own thing</p>
+              <p><code>$(:button)</code> Selects all buttons <br> <code>$(":contains(text)")</code> Selects all Elements with the particular Text. <br> <code>$(':not(selector)')</code>Everything that is not selected this way.</p>
+            </article>
+            <article>
+              <h3>2.3 Chaining</h3>
+              <p>Allows you to run multiple commands on wrapped set while only accessing those DOM elements once, like this $(selector).method1().method2() <br>Example: <code>$('p').css('background-color','red').css('color','green')</code></p>
+              <p>If you select something Query always returns an Selection Object which enables you to chain all kinds of availiable Methods in JQuery together.</p>
+            </article>
+      </section>
+    </main>
+
+    <aside role="complementary" id="linklisten" class="linklisten">
+        <h2 class="hideme">Linklisten</h2>
+        <section id="#">
+            <h3>links zu Thema 1</h3>
+            <ul>
+                <li><a href="http://api.jquery.com/category/selectors/">JQuery Selectors Api</a></li>
+                <li><a href="#">Was ist »<span lang="en">mobile</span>«?</a></li>
+                <li><a href="#">Das Interweb</a></li>
+            </ul>
+        </section>
+    </aside>
+
+    <footer role="contentinfo">
+      <h2>Infos über diese Webseite</h2>
+        <small>Copyright &copy; <time datetime="2016">2016</time><a href="#">Impressum</a></small>
+        <address><p>NAME | Straße |  PLZ Ort  |  LAND</p></address>
+    </footer>
+    </div>
+</body>
+</html>
