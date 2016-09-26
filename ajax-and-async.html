@@ -92,13 +92,53 @@
               </li>
             </ul>
             <p>NOTE: The $.methodeName() stands for a global variable.</p>
-            <p><strong>Cross domain scripting</strong> And it's a rule. It's a rule that all the browsers have to follow. It means if I go to a Web page, I'm not going to feel safe if that Web page goes to a whole bunch of other domains for on my behalf and fetches stuff and returns it to me, I don't know where this stuff came from. I want a little bit of security knowing if I go to XYZ.com I'm only seeing stuff from XYZ. So if XYZ.com </p>
+            <p><strong>Cross domain scripting</strong> And it's a rule. It's a rule that all the browsers have to follow. It means if I go to a Web page, I'm not going to feel safe if that Web page goes to a whole bunch of other domains for on my behalf and fetches stuff and returns it to me, I don't know where this stuff came from. I want a little bit of security knowing if I go to XYZ.com I'm only seeing stuff from XYZ. So if XYZ.com the developers there could just access any other servers that they wanted to there would be some security holes. There would be some issues. And so we've got these cross-domain concerns, and we have to resolve those in some way. And these resolutions amount to us resolve those in some way. And these resolutions amount to us have script injection going on. Instead, it's all just data that we're fetching from these services. </p>
+            <p>There's really two ways to do this cross-domain validation. There's the what I would say the old way JSON P which stands for JSON with padding. It's a little bit of a trick that allows you to, because we can't pull this JSON back from other domains without our browser saying hey, that's illegal. The browser doesn't say anything about us pulling data back in a script tag so we're able to pull that back in a script tag nd execute that script tag locally. It ends up being safer than just bringing back the script directly. But it's a little bit of a pain for developers. I hate JSON P programming. </p>
+            <p>So the second method, the more modern method is CORS. C-O-R-S cross origin something, something. Scripting. Resource scripting. I think that's what it is. Scripting. Resource scripting. I think that's what it is. </p>
         </article>
         <article>
           <h2>Shorthand Methods</h2>
+          <ul>
+            <li>
+              <p><code>$.get()</code> Loads data from the Server using a HTTP GET request</p>
+            </li>
+            <li>
+              <p><code>$.post()</code> Loads data from the server using a HTTP POST request</p>
+            </li>
+            <li>
+              <p><code>$getJSON()</code> Load JSON-encoded data from the server using a HTTP GET Request</p>
+            </li>
+            <li>
+              <p><code>$.getScript()</code> Load a JavaScript file from the server using a HTTP GET request and then execute it.</p>
+            </li>
+            <li>
+              <p><code>$.load()</code> Load data from the server and place the returned HTML into the matched element.</p>
+            </li>
+          </ul>
         </article>
         <article>
           <h2>Deferred Objects</h2>
+          <p>The Deferred object can register an invoke callback queues and relay the callbacks success or failure asynchronously. It can be chained, but is different Object than $</p>
+          <ul>
+            <li>
+              <p><code>$.Deferred()</code></p>
+            </li>
+            <li>
+              <p><code>deferred.promise()</code></p>
+            </li>
+            <li>
+              <p><code>deferred.then() and .done()</code></p>
+            </li>
+            <li>
+              <p><code>deferred.fail() and .always()</code></p>
+            </li>
+            <li>
+              <p><code>$.when()</code></p>
+            </li>
+            <li>
+              <p><code>.promise()</code></p>
+            </li>
+          </ul>
         </article>
       </section>
     </main>
@@ -108,7 +148,10 @@
         <section id="#">
             <h3>links zu Thema 1</h3>
             <ul>
-                <li><a href="http://api.jquery.com/category/selectors/">JQuery Selectors Api</a></li>
+                <li><a href="http://www.odata.org/odata-services/">OData Reference Services</a></li>
+                <li><a href="http://www.telerik.com/fiddler">Web debugging with Fiddler</a></li>
+                <li><a href="https://www.getpostman.com/"></a>Postman</li>
+                <li><a href="http://www.odata.org/odata-services/"></a></li>
                 <li><a href="#">Was ist »<span lang="en">mobile</span>«?</a></li>
                 <li><a href="#">Das Interweb</a></li>
             </ul>
