@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript for Experienced Developers - Getting Started</title>
+
+    <meta name="description" content="Workshop HTML...">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link href="css/normalize.css" rel="stylesheet" media="all">
+    <link href="css/master.css" rel="stylesheet" media="all">
+    <!--[if lt IE 9]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
+
+</head>
+<body>
+    <div id="site-wrapper">
+        <header role="banner" class="pageheader">
+        <h1>Getting Started</h1>
+    </header>
+    <nav role="navigation" id="nav" class="navmain">
+      <h2>Navigation</h2>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="oop.html">Object Orientation</a></li>
+        <li><a href="webworkers.html">Web Worker</a></li>  
+        <li><a href="servercommunications.html">Server Communication</a></li>
+        <li><a href="javascript-libraries.html">JavaScript Libraries</a></li>           
+      </ul>
+    </nav>
+
+    <main role="main" aria-labeledby="content">
+      <section>
+        <header>
+          <p>A Course for experienced Developers who dive into Javascript</p>
+          <img srcset="" src="" alt="">
+        </header>
+        <article>
+            <h2>Intro</h2>
+            <ul>
+                <li>
+                    <p>JavaScript is a progarmming language of the Web</p>
+                </li>
+                <li>
+                    <p>It is a dynamic scripting language that supports prototype based objct construction.</p>
+                </li>
+                <li>
+                    <p>Many of the basic syntax and language constructs are similar to Java and C++</p>
+                </li>
+            </ul>
+            <h3>Scoping of Variables</h3>
+            <ul>
+                <li>
+                    <p>Variables in Javascript are eithr considered to be local or global</p>
+                </li>
+                <li>
+                    <p>Local Variable Scope: local variables can ONLY be created in a function</p>
+                </li>
+                <li>
+                    <p>There is no such thing as block-level scope variables <br>- Any variables created in any other block of code(code surrounded by curly brackets) will be considered global <br>-Example: variables that are a part of an if statement is not local to the if statement, it is considered a global variable</p>
+                    <pre>
+                        <code>
+                            var color = "blue";
+
+                            if(color){
+                                var color = "purple"; // this is a global variable, so the clor will be changed to purple.
+                                console.log(color); //This statement will print purple
+                            }
+
+                            console.log(color); //And this statement will print purple.
+                        </code>
+                    </pre>
+                    <p>As you can see the color variable in the if statement is global and though it is declared as a new variable in the if statement, it is not considered local because it is not in an function.</p>
+                    <pre>
+                        <code>
+                            var color = "blue";
+
+                            function printColor(){
+                                var color = "purple"; // this is a local variable, so the clor will be changed to purple.
+                                console.log(color); //This statement will print purple
+                            }
+
+                            console.log(color); //And this statement will print blue.
+                        </code>
+                    </pre>
+                    <p>As you can see the local color variable is labeled as purple, and is only purple within the printColor function. <br>Though both the local and global variable have th same name, the local variable will take precedence over the global variable in the printColor function.</p>
+                </li>
+            </ul>
+        </article>
+        <article>
+          <h2>Functions and Enclosures</h2>
+          <h3>Functions in JavaScript</h3>
+          <ul>
+              <li>Just like functions in other languages, function in JavaScript are a block of code used to perform a particular task.</li>
+              <li>A function is defined with the <em>function</em> keyword, followed by the name of the function and than a pair of parentheses, which will contain the parameters.</li>
+              <li>Functions in JavaScript habe other capabilities that they do not have in other object oriented languages</li>
+          </ul>
+        </article>
+        <article>
+          <h2>Anonymous Functions</h2>
+        </article>
+        <article>
+          <h2>Dot and bracket notation</h2>
+        </article>
+        <article>
+          <h2>Errors and Exceptions</h2>
+        </article>
+      </section>
+    </main>
+
+    <aside role="complementary" id="linklisten" class="linklisten">
+        <h2 class="hideme">Linklisten</h2>
+        <section id="#">
+            <h3>links zu Thema </h3>
+            <ul>
+                <li><a href="http://www.odata.org/odata-services/">OData Reference Services</a></li>
+            </ul>
+        </section>
+    </aside>
+
+    <footer role="contentinfo">
+      <h2>Infos über diese Webseite</h2>
+        <small>Copyright &copy; <time datetime="2016">2016</time><a href="#">Impressum</a></small>
+        <address><p>NAME | Straße |  PLZ Ort  |  LAND</p></address>
+    </footer>
+    </div>
+</body>
+</html>
