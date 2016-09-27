@@ -94,15 +94,216 @@
               <li>A function is defined with the <em>function</em> keyword, followed by the name of the function and than a pair of parentheses, which will contain the parameters.</li>
               <li>Functions in JavaScript habe other capabilities that they do not have in other object oriented languages</li>
           </ul>
+          <h3>Self Invoking Functions</h3>
+          <p>- A special type of function that can be created within Javascript <br>- These functions run automatically. No call to the function needed. <br>- They can be anonymous or not</p>
+          <pre>
+              <code>
+                   ((function selfPrint(){
+                        console.log('Do the autoprint')
+                    })());
+              </code>
+          </pre>
+          <p>if you need an animation to start right on the dot, as soon as the page loads, that's great for a self invoking function.</p>
+          <p>And the great part about having that self running function is that if you declare something inside of there, you don't have to worry about it potentially bubbling out.And having a name conflict with something else.</p>
+          <h3>Enclosures</h3>
+          <ul>
+              <li>Similar to a nested function, an enclosure is a function written inside another function.</li>
+              <li>An enclosure has access to:
+                  <ul>
+                      <li>- its own variables</li>
+                      <li>- outer functions variables, as well as its parameters</li>
+                      <li>- global variables</li>
+                  </ul>
+              </li>
+              <li>Always remember that a function is made using the function keyword, so an enclosure will not be created properly unless the function keyword is used.</li>
+          </ul>
+          <pre>
+              <code>
+                  function showName(firstName, lastName){
+                    var nameIntro = "Your name is ";
+
+                    function makeFullName(){  //The Enclosure
+                        return nameIntro + firstName + ' ' + lastName;
+                    }
+
+                return makeFullName();
+              }
+              </code>
+          </pre>
+          <p>Things to Notice:</p>
+          <ol>
+              <li>No parameters were passed to makeFullName function yet it was able to print the name accurately</li>
+              <li>The Function keyword is being used to define the enclosure</li>
+          </ol>
+          <p>Enclosure Fun Facts</p>
+          <ul>
+              <li><p>Being that enclosure have access to their outer functions variables and parameters, this allows the enclosure to be called later after the function returns and still be able to have access to these variables</p>
+                <pre>
+                    <code>
+                         function celebrityName(firstName){
+                            var nameIntro = 'This celebrity is ';
+
+                            function lastName(theLastName){
+                                console.log(nameIntro + firstName + ' ' + theLastName);
+                            }
+
+                            return lastName;
+                         }
+
+                         var myName = celebrityName('Diggi');
+                    </code>
+                </pre>
+                <p>if you were just to call the function like this the actual function will never run, the console log will never run you'll never see see this celebrity is Diggi. Why, because there is no last name, so technically the enclosure will never be invoked, it will never be called. Now simply if you just do myName, so the variable, and then added a last name.</p>
+                <pre>
+                    <code>myName('Diggla');</code>
+                </pre>
+                <p>It'll then, this line right here is what invokes the last name enclosure, and then it will run perfectly.</p>
+              </li>
+              <li>
+                  <p>Enclosures only store references to outer function variables, not the actual variables themselves. This allows for variables to updated at all times.</p>
+                  <pre>
+                      <code>
+                          function theLocation(){
+                            var city = 'San Francisco';
+                            
+                            return{
+                                get: function(){console.log(city);},
+                                set: function(newCity){city = newCity;}
+                            }
+                          }
+
+                          var myPlace = theLocation();
+                          myPlace.get();
+                          myPlace.set('Oakland');
+                          myPlace.get();
+                      </code>
+                  </pre>
+                  <p>So you should then see how simply it just did a myPlace.get, and it was able to print out San Francisco by calling this function. And then, shortly after that we just set the city then to Oakland, and then when we do another get call it was able to print out Oakland perfectly fine. So this pretty much is just showing you how you can call the on closures, the enclosures, sorry. Right after the location function has already returned. And also shows how the variables are updated really quickly in enclosures. <br> So when I'm calling that function it's giving me back the enclosure. And then I can call the couple of functions that you created on that enclosure.</p>
+              </li>
+          </ul>
         </article>
         <article>
           <h2>Anonymous Functions</h2>
-        </article>
-        <article>
-          <h2>Dot and bracket notation</h2>
+          <ul>
+              <li>Anonymous functions, simply put, are functions without names</li>
+              <li>They are all dynmically declared at runtime</li>
+              <li>They are used in various ways: <br>- As an function expression <br>- In an Object <br>-As an event handler <br>- As an self evoking function</li>
+              <li>Common uses are for recursion and enclosures</li>
+          </ul>
+          <pre>
+              <code>
+                function meTime(){ // Named function
+                    alert('Go do something fun!');
+                }
+
+                var meTime = function(){ // Anonymous function
+                    alert('Go do something fun');
+                }
+              </code>
+          </pre>
+          <h3>Name Function vs Anonymous Functions</h3>
+          <p>Both functions logically do the same things, and can both be invoked the same way(by calling <em>meTime()</em>)</p>
+          <p>However the Anonymous function can not be accessed before the meTime variable is declared, while the Named Function can be accessed at any time.</p>
+          <h3>Different Types of Anonymous Functions</h3>
+          <ul>
+              <li>
+                  <p>Function expression</p>
+                  <pre><code>
+                        var sayHi = function(){
+                            alert('hello');
+                        }
+                      </code></pre>
+              </li>
+              <li>
+                  <p>in an Object</p>
+                  <pre><code>
+                        var pony = {
+                            sayName: function(){
+                                alert('My name is Pony');
+                            }
+                        }
+                      </code></pre>
+              </li>
+              <li>
+                  <p>event handler</p>
+                  <pre><code>
+                        $('p').click = function(){
+                            alert('hello');
+                        }
+                      </code></pre>
+              </li>
+              <li>
+                  <p>self invoking functions</p>
+                  <pre><code>
+                        ((function(){
+                            alert('hello');
+                        })());
+                      </code></pre>
+              </li>
+          </ul>
+          <h3>Anonymous functions and Recursion</h3>
+          <pre>
+            <code>
+                var factorial = function(x){
+                    return !(n > 1) ? 1 : arguments.callee(n-1) * n;
+                }
+            </code>
+          </pre>
+          <p>Since this function does not have a name, tho call the function again you use the arguments.callee local variable.</p>
         </article>
         <article>
           <h2>Errors and Exceptions</h2>
+          <h3>Errors</h3>
+          <ul>
+              <li>Like many other programming languages, the three errors that can be found in JavaScript are: <br>- Syntax Errors <br>- Runtime Errors <br>- Logical Errors</li>
+              <li>Methods used for exeception handling: <br>- Try...catch...finally statement <br>- Throw statement <br>- The onerror() method</li>
+          </ul>
+          <h4>Try...catch...finally</h4>
+          <ul>
+              <li>The try block executes code that is subject to break <br>- It must be followed by ether exactly one catch block or one finally block or one of both <br>- When exception occurs, the exception is passed to the catch block</li>
+              <li>The catch block executes code that should only be ran if an exception was caught.</li>
+              <li>The finally block is optional, but if included, it will always execute regardless if an exception has occurred</li>
+              <li>NOTE: Only programmer generated and runtime exceptions can be caught; syntax errors will not be.</li>
+              <pre>
+                <code>
+                    function myFunc(){
+                        var a = 100;
+                        bar b = 10
+
+                        try{
+                            if(b == 0){
+                                throw('Divide by zero error');
+                            }
+                            else{
+                                var c = a / b;
+                                alert('c =' + c);
+                            }
+                        }catch(e){
+                            alert('Error:' + c);
+                        }
+                        finally{
+                            alert('Finally block will always execute');
+                        }
+                    }
+                </code>
+              </pre>
+          </ul>
+          <h4>The onerror() Method</h4>
+          <ul>
+              <li>The oneerror() method is an event handler fired whenever an exception occurs on the page</li>
+              <li>It is declared as a function through out the code</li>
+              <li>This event handler provides three pieces of information: <br>- An error message <br>- The file in which the error occurred. <br>- The line number in the code</li>
+              <li>The information can be manipulated to be displayed in any way you like.</li>
+          </ul>
+          <pre>
+              <code>
+                  window.onerror = function(msg, url, line){
+                    alert("Message: " + msg);
+                    alert("url " : + url);
+                    alert("Line number: " + line);
+                  }
+              </code>
+          </pre>
         </article>
       </section>
     </main>
