@@ -146,16 +146,136 @@
           </pre>
           <h3>The Protoype Object</h3>
           <ul>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>Every object has a prototype and ever prototype is an object</li>
+            <li>All objects inherit properties and methods from their prototypes(hence why it is the basis of inheritance)</li>
+            <li>Prototyping is also an easy way to add properties and methods to all objects of a particular type that have already been instantiated.</li>
           </ul>
+          <pre>
+            <code>
+              //Fruit Constructor
+              function fruit(name, color){
+
+	              this.name = name;
+	              this.color = color;
+
+	              this.saySomething = function(){
+		              console.log('Say hi')
+	              }
+
+              }
+
+              var apple = new fruit('apple','red');
+              var orange = new fruit('orange', 'orange');
+
+              //Adds the Methode healthy to all Object of type Fruit
+              fruit.prototype.healthy = function(){
+	              console.log('The Fruit ' + this.name + ' is good for you.');
+              }
+
+              apple.healthy();
+              orange.healthy();
+
+              //Adds the Methode healthy2 just to the instance of the name Apple
+              apple.healty2 = function(){
+	              console.log("I am availiable just for this Object");
+              };
+
+              apple.healty2();
+              
+              //This Call produce an error because the Methode healthy2 is not on orange Methode Protocoll.
+              orange.healty2();
+            </code>
+          </pre>
         </article>
         <article>
           <h2>Inheritance</h2>
+            <pre>
+              <code>
+                //Person1 Constructor
+                var Person1 = function(firstName){
+	                this.firstName = firstName;
+                };
+
+                //Adding another Methode to the Person1s prototype at runtime.
+                Person1.prototype.sayHello = function(){
+                	console.log("Hello, I'm " + this.firstName);
+                }
+
+                //Like Person1, adding a Method at compile time.
+                var Person2 = function(firstName){
+	                this.firstName = firstName;
+
+	                this.sayHello = function(){
+		                console.log("Hello, I'm " + this.firstName);
+	                }
+                }
+
+
+                //Child Constructor for Person
+                var Student = function(firstName, subject){
+
+	                //Calling the Parent constructor
+	                Person1.call(this, firstName);
+	
+	                //Initializing the Student-specific property
+	                this.subject = subject;
+                }   
+
+
+                //Create a Student.prototype object that inherits form Person1.prototype.
+                //BTW Just new Student(.....) don't work.
+                Student.prototype = Object.create(Person1.prototype);
+
+                //Set the constructor property to refer to Student
+                Student.prototype.contructor = Student;
+
+                //Replacing the "sayHello" method
+                Student.prototype.sayHello = function(){
+	                console.log('Hello my Name is ' + this.firstName + ' and I am studying ' + this.subject);
+                }
+
+                var student1 = new Student("Dave","Modern Arts");
+
+                console.log(student1 instanceof Person1);
+                console.log(student1 instanceof Student);
+              </code>
+            </pre>
         </article>
         <article>
           <h2>Final Facts</h2>
+            <h3>Encapsulation</h3>
+            <ul>
+              <li>Encapsulation in Javascript is the same as it is in other OOP languages</li>
+              <li>Though private and public methods are not used in Javascript to hide functionality, some methods we have discussed were made to help us with that issue: <br>- closures <br>- Constructors <br>- And in some cases Anonymous Functions</li>
+            </ul>
+            <h3>The in Operator</h3>
+            <p>The In Operator: Will tell you if a property exists in an object.</p>
+            <p>hasOwnProperty method: Will tell you if a specific property is unique to an object.</p>
+            <p>For/in loop: to access all the properties in an object.</p>
+            <pre>
+              <code>
+                var seafood = {small: "shrimp", big: "shark"};
+
+                console.log("Is small in seafood" + "small" in seafood);
+
+                console.log("Has seafood the property toString? " + seafood.hasOwnProperty('toString'));
+                console.log("Has seafood the property big? " + seafood.hasOwnProperty('big'));
+
+
+                //For json returns the property names.
+                for(var element in seafood){
+	                console.log(element);
+                }
+
+
+                //For arrays returns just indices :(
+                var seaFoodArray = ['shrimp', 'shark'];
+
+                for(var element2 in seaFoodArray){
+	                console.log(element2);
+                }
+              </code>
+            </pre>
         </article>
       </section>
     </main>
