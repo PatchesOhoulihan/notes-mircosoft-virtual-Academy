@@ -35,7 +35,127 @@
           <img srcset="" src="" alt="">
         </header>
         <article>
-          <h2>Global Ajax Event Handlers</h2>
+          <h2>Object Oriented Programming in JavaScript</h2>
+          <p>Though many people are unaware, Javascript is a great OOP language. Unlike others like C# and Java, JavaScript supports inheritance through prototyping.</p>
+          <p>Protoyping is simply first creating the behavior of any constructor and then reusing it to create other Objects.</p>
+          <p>In JavaScript, there is no real class statement. Insead a constructor is made as a function.</p>
+          <p>JavaScript does have some built in objects. But the object at the top, top, top of the hierarchy would be the object object. So all objects that are made, whether built in or customized,	which are the ones that we would be making. They all pretty much inherit all the functionalities of the object object.</p> 
+        </article>
+        <article>
+          <h2>Creating Objects</h2>
+          <h3>How to Create An Object</h3>
+          <ul>
+            <li>
+              <p>Using Object Literals</p>
+              <li>With this method, you simply initialize all the properties of the object within brackets</li>
+              <li>The properties are separated by commas</li>
+              <pre>
+                <code>
+                  var collegeAlgebra = {
+                    level: "freshman",
+                    difficulty: "hard",
+                    expectedGrade: 98,
+
+                    textbook: function(){console.log("Here comes the Mouse");}
+                  }
+                </code>
+              </pre>
+            </li>
+            <li>
+              <p>Using the Object Constructor</p>
+              <li>With this method, you insantiate the Object by calling the Object constructor</li>
+              <li>Properties are added using dot notation</li>
+              <pre>
+                <code>
+                  var collegeAlg = new Object;
+            
+                  collegeAlg.level = "freshman";
+
+                  collegeAlg.textbook = function(){
+                    console.log("Here comes the Mouse");
+                  }
+                </code>
+              </pre>
+            </li>
+          </ul>
+          <h3>Accessing Object Properties</h3>
+          <p>Dot Notation: Using a period between the object name and property</p>
+          <p>Bracket Notation: Using a bracket between the object name and property <br> Also lets you access property/methode name through other variables</p>
+          <pre>
+            <code>
+                var collegeAlg = new Object;
+            
+                  collegeAlg["level"] = "freshman";
+
+                  collegeAlg["textbook"] = function(){
+                    console.log("Here comes the Mouse");
+                  }
+            </code>
+          </pre>
+          <p>And so the bracket notation gives you the ability to be a bit more dynamic there. So if maybe at runtime you're gonna figure out what property it is that you wanna display, you could then use the bracket notation there.</p>
+          <pre>
+            <code>
+              var propName = 'level';
+              var methName = 'textbook';
+
+              collegeAlg[propName]; // To Assign the Value;
+              collegeAlg[methName]; // To Assign a function;
+
+              collegeAlg[methName](); // To Assign and Call a function;
+            </code>
+          </pre>
+          <h3>Deleting a property</h3>
+          <p>Deleting a property from an object is something as simple using the delete operator. You cannot delete properties that were inherited.</p>
+          <pre>
+            <code>
+              var collageAlg = {
+                level: "freshman",
+                difficulty: "hard",
+                expectedGrade: 98
+              }
+
+              delete collageAlg.level;
+            </code>
+          </pre>
+        </article>
+        <article>
+          <h2>Constructors and the Prototype Object</h2>
+          <h3>Constructors</h3>
+          <ul>
+            <li>Just like other OOP languages, constructors are used to set an object's properties and methods.</li>
+            <li>constructors are invoked the moment an object is instantiated</li>
+            <li>In Javascript, constructors are written in the form of a function using the function keyword</li>
+          </ul>
+          <pre>
+            <code>
+              function Fruit(name, color){
+                console.log("Object created by constructor");
+
+                this.name = name;
+                this.color = color;
+
+                this.type = function(){
+                  console.log("Hi, I am a fruit");
+                }
+              }
+
+              var orange = new Fruit("orange", "orange");
+              orange.type;
+              console.log(orange);
+            </code>
+          </pre>
+          <h3>The Protoype Object</h3>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </article>
+        <article>
+          <h2>Inheritance</h2>
+        </article>
+        <article>
+          <h2>Final Facts</h2>
         </article>
       </section>
     </main>
