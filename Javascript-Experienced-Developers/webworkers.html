@@ -35,7 +35,38 @@
           <img srcset="" src="" alt="">
         </header>
         <article>
-          <h2>Global Ajax Event Handlers</h2>
+          <h2>Web Workers</h2>
+          <h3>Threading in Javascript</h3>
+          <ul>
+            <li>
+              <p>Put simply, JavaScript doesn't natively support threading <br>- Performance and security conscerns</p>
+            </li>
+            <li>How do we handle long running operations <br>- And so HTML5, the W3C, introduced this concept of web workers, which is how we can simulate threading. Now, if you're looking for kinda full threading support, that you might have say in a .NET application, or inside of a Java application, you're obviously not going to get that here. But this will at least give you what you typically need for most scenarios.</li>
+          </ul>
+          <h3>so what's a web worker then?</h3>
+          <p>Well, a web worker is basically a process where we can tell the browser that we've got some script that's gonna take a little while, and we want this to run asynchronously.</p>
+          <ul>
+            <li>A Web worker is a process through which you can tell a browser you have a script that's likely to take some time and you'd like it to run asynchronously</li>
+            <li>A very simple "s" implementation <br>- No control over the thread itself.</li>
+            <li>
+              <p> Implemented through a messaging system:</p>
+              <ul>
+                <li>You send messages to the worker</li>
+                <li>Worker sends messages to 'main thread'</li>
+              </ul>
+              <p>Workers doesn't have the ability to update the UI</p>
+            </li>
+          </ul>
+          <p>Now, one very big key to keep in mind with web workers, is that they are going to be running on this separate thread over here.	And so synchronization can become a bit of a problem.	Now, what happens if I have a script on mypage that's gonna update the UI and then my web worker wants to be able to update the UI?	Then what do we do?</p>
+          <p>Well, in order to just solve the problem by not allowing that problem to actually take hold, the rule is, that the only thread, if you will, that's allowed to update the UI, is the main browser thread. So the web worker itself is not gonna be able to update the UI.</p>
+        	<p>In order to update the UI, it'll simply have to send a message back to the browser and then ask the browser or expect the browser to go ahead and update the UI. So it does not have the ability to update the UI directly.</p>
+          <p>The web worker also has some limited access to the resources, either on the system or in the browser. You'll notice, for example, that you don't have the ability to access the window object. You don't have the ability to access the document object. So there are some limitations around what the worker can do,for both the synchronization and a security perspective there.</p>
+        </article>
+        <article>
+          <h2>jQuery Defered</h2>
+        </article>
+        <article>
+          <h2>JQuery Promises</h2>
         </article>
       </section>
     </main>
