@@ -31,11 +31,113 @@
     <main role="main" aria-labeledby="content">
       <section>
         <header>
-          <p>A Course for experienced Developers who dive into Javascript</p>
+          <p>Calling the server</p>
+          <ul>
+            <li>One of the main goals of modern web applications is to mimic locally installed applications</li>
+            <li>The catch? A lot of the data and resources you need are on the server</li>
+          </ul>
           <img srcset="" src="" alt="">
         </header>
         <article>
-          <h2>Global Ajax Event Handlers</h2>
+          <h2>XML HTTP Request</h2>
+          <ul>
+            <li>Orignially created to support Outlook Web Access (Later added to Mozilla and became a de facto standard)</li>
+            <li>Allows for "raw" calls to the server</li>
+          </ul>
+          <p>Sample Call</p>
+          <pre>
+            <code>
+              var result = null;
+
+              var xhr = new XMLHttpRequest();
+
+              xhr.onreadystatechange = function(){
+                
+                //see if the operation has completed and is successful
+                if(xhr.readyState == 4 && xhr.status == 200){
+                  result = xhr.resultText;
+                }
+              }
+
+              //Open connection
+              xhr.open('GET', 'URL');
+
+              //Send request
+              xhr.send();
+            </code>
+          </pre>
+        </article>
+        <article>
+          <h2>Ajax</h2>
+          <p>You probably don't want to have to worry about, okay, well, what's the status? And calling send, and setting all of that up. Like with XML HTTP Requests, this is where ajax and JQuery comes into play.</p>
+          <h3>What is Ajax</h3>
+          <ul>
+            <li>Asynchronous Javascript and XML</li>
+            <li>Set of commonly used standards and technologies for making server calls</li>
+            <li>ajax stands for asynchronous JavaScript and XML. But, Ironically enough, these days, there's very little XML that typically, rather then sending XML data back and forth, you'll send Jason data. JavaScript object notation. You'll send JSON data back and forth, instead.</li>
+          </ul>
+          <h3>jQuery support</h3>
+          <ul>
+            <li>JQuery (and other libraries) simplify making Ajax calls <br>- Still uses XMLHttpRequest behind the scenes</li>
+            <li>Provides helper methods: <br>- $.get to retrieve text <br>- $.getJSON to retrieve a JSON object</li>
+          </ul>
+          <p>Same Example from above with JQuery:</p>
+          <pre>
+            <code>
+              $.get('./Demo.txt').done(function(data){
+                $('#whereToOutput').text(data);
+              });
+            </code>
+          </pre>
+        </article>
+        <article>
+          <h2>Web Sockets</h2>
+          <p>But how about the server calling the client? Now let's say, for example, that I wanted to create the next great social networking site. I really don't, but let's just say I do. Well if we're going to create a social network site, what will end up happening is all these different people are going to be commenting on all these different things that I want to be able to see that on my data feed all live. Well I don't want to just be constantly refreshing</p>
+          <h3>What about the server calling the client?</h3>
+          <ul>
+            <li>If we're going to create a truly interactive site, the server needs to be able to update the client.</li>
+            <li>Several technologies exist</li>
+            <li>W3C introduced Web Sockets as part of HTML 5</li>
+          </ul>
+          <p>definition:</p>
+          <ul>
+            <li>Similar to normal socket development <br>- Client can call server <br>- Server can call client</li>
+            <li>Uses messaging system <br>- Similar to web workers</li>
+            <li>Supported by most modern browsers</li>
+          </ul>
+          <h3>Client web sockets</h3>
+          <pre>
+            <code>
+              //create the socket
+              var socket = new WebSocket('url');
+
+              //receive message from server
+              socket.onmessage = function(e){
+                $('#output').append('<li>' + e.data + '</li>');
+              }
+
+              //Connection established
+              socket.onopen = function (){
+                $('#send-message').removeAttr('disabled');
+              }
+
+              //send a message to the server
+              socket.send('hello, world!');
+            </code>
+          </pre>
+          <h3>Server web sockets</h3>
+          <p>The server is going to send something down to the client, client is going to send something back to the server. Two-way communication. The server needs to support socket. Most every web server these days supports web socket. This is the ASP.net implementation. Node supports this. PHP supports this.</p>
+        </article>
+        <article>
+          <h2>SignalR</h2>
+          <h3>Web sockets are pretty rudimentary</h3>
+          <ul>
+            <li>One method(send) to send messages</li>
+            <li>One event (onmessage) to receive messages</li>
+            <li>You're responsivle for handling serialization if you're using objects</li>
+            <li>No fallback if the browser doesn't support web sockets</li>
+          </ul>
+          <p>This is where signal R comes into play. Now signal R is an ASP.net technology and it's designed to really abstract all of that away and really just allow us to program like we're used to programing. So you're going to notice that there's going to be full-blown objects, full-blown methods. Automatic serialization, automatic fall back, everything just looks like objects.</p>
         </article>
       </section>
     </main>

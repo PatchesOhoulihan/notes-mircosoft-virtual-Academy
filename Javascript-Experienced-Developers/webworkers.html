@@ -54,19 +54,127 @@
                 <li>You send messages to the worker</li>
                 <li>Worker sends messages to 'main thread'</li>
               </ul>
-              <p>Workers doesn't have the ability to update the UI</p>
+              <p>Workers doesn't have the ability to update the UI, so isn't the DOM availiable.</p>
             </li>
+            <li>Web workers can pass any JSON/Javascript object</li>
           </ul>
           <p>Now, one very big key to keep in mind with web workers, is that they are going to be running on this separate thread over here.	And so synchronization can become a bit of a problem.	Now, what happens if I have a script on mypage that's gonna update the UI and then my web worker wants to be able to update the UI?	Then what do we do?</p>
           <p>Well, in order to just solve the problem by not allowing that problem to actually take hold, the rule is, that the only thread, if you will, that's allowed to update the UI, is the main browser thread. So the web worker itself is not gonna be able to update the UI.</p>
         	<p>In order to update the UI, it'll simply have to send a message back to the browser and then ask the browser or expect the browser to go ahead and update the UI. So it does not have the ability to update the UI directly.</p>
           <p>The web worker also has some limited access to the resources, either on the system or in the browser. You'll notice, for example, that you don't have the ability to access the window object. You don't have the ability to access the document object. So there are some limitations around what the worker can do,for both the synchronization and a security perspective there.</p>
+          <p>If you're not sure whether or not a browser supports the worker, just simply check to see if Worker,, just check to see if it's null. If it's null, then that means that the browser doesn't support web workers.</p>
+          <h3>Check web Worker Support</h3>
+          <pre>
+            <code>
+              if (typeof(Worker) !== "undefined") {
+                // Yes! Web worker support!
+                // Some code.....
+              } else {
+                // Sorry! No Web Worker support..
+              } 
+            </code>
+          </pre>
+          <h3>Create a Web Worker File (webworker.js)</h3>
+          <pre>
+            <code>
+              var i = 0;
+
+              function timedCount() {
+                i = i + 1;
+                postMessage(i);
+                setTimeout("timedCount()",500);
+              }
+
+              timedCount(); 
+            </code>
+          </pre>
+          <p>the postMessage() method - is used to post a message back to the HTML page.</p>
+          <h3>Create a Web Worker Object</h3>
+          <p><code>w = new Worker("demo_workers.js");</code> <br>Then we can send and receive messages from the web worker.</p>
+          <h3>Add an Eventlistener</h3>What deferred will allow you to do
+00:33:26 	is it will allow you to setup a middle man object.
+00:33:30 	So that I call into this middle man object.
+00:33:32 	It's gonna do some magic and it's gonna let me know once
+00:33:37 	it's completed so then that way I can go ahead and run my code.
+00:33:42 	That's what deferred is all about
+          <pre>
+            <code>
+              w.onmessage = function(event){
+                 document.getElementById("result").innerHTML = event.data;
+              };
+            </code>
+          </pre>
+          <p>When the web worker posts a message, the code within the event listener is executed. The data from the web worker is stored in event.data.</p>
+          <h3>Terminate a Web Worker</h3>
+          <p>Workers don't have events for start or end. When a web worker object is created, it will continue to listen for messages (even after the external script is finished) until it is terminated. To terminate a web worker, and free browser/computer resources, use the terminate() method: <br>Stopping a web worker <br>-From page <code>worker.terminate();</code> <br>-From worker <code>self.close();</code></p>
+          <p><code>w.terminate();</code></p>
+          <p>Same example with a slightly diffent coding style:</p>
+          <pre>
+            <code>
+              var worker = new worker('webworker.js');
+              worker.addEventListener('message', function(event){
+                //receive Messages from Worker.
+                var message = event.data;
+                alert(message);
+              });
+              
+              //send message to the worker
+              worker.postMessage('Hi Worker');
+            </code>
+          </pre>
+          <p>Worker Script</p>
+          <pre>
+            <code>
+              self.addEventListener('message', function(event){
+                //receive message from page
+                var message = e.data;
+
+                //send message to page
+                self.postMessage(e.data + ' - Processed!');
+              });
+            </code>
+          </pre>
+          <p>That if we want to send a message to one side or to the other, it's the exact same method, simply, postMessage. And that would send a message from one side to the other.</p>
         </article>
         <article>
           <h2>jQuery Defered</h2>
+          <p>
+            What deferred will allow you to do is it will allow you to setup a middle man object. So that I call into this middle man object. It's gonna do some magic and it's gonna let me know once it's completed so then that way I can go ahead and run my code. That's what deferred is all about
+          </p>
+          <p>What see here is the Jquery way.</p>
+          <h3>Long running operations</h3>
+          <ul>
+            <li>You can create your own long running operations and allow other developers to register eventhandlers</li>
+            <li>Defferred object is used to manage long running operatons and raise events on completion, failure, etc.</li>
+          </ul>
+          <h4>Long running operation pattern</h4>
+          <ol>
+            <li>Create a deferred object <code>var deferred = $.Deferred();</code></li>
+            <li>Start your async operation</li>
+            <li>Return a promise <code>return deferred.promise();</code></li>
+            <li>Call resolve for success <code>deferred.resolve(); </code> Resolve when operation completes, Alerts anyone whos using hte promise object</li>
+            <li>Call reject for failure <code>deferred.reject();</code></li>
+          </ol>
         </article>
         <article>
           <h2>JQuery Promises</h2>
+          <h3>Asynchronous programming</h3>
+          <ul>
+            <li>Certain operations can take an unknown amount of time <br>Making server calls <br>-Working with graphics</li>
+            <li>Certain operations perform at unknown times <br>-Timed events <br>-Web sockets</li>
+          </ul>
+          <p>Asynchronous programming allows us to manage those situations.</p>
+          <h3>jQuery Promise object</h3>
+          <ul>
+            <li>jQuery Promise is an implementaiton of the promise pattern</li>
+            <li>Put simply, the promise pattern allows a developer to register event handlers for various events aor states <br>-Failed <br>-Succeeded <br>-In progress</li>
+          </ul>
+          <h3>Three common Promise events</h3>
+          <ul>
+            <li><strong>done</strong> - Operation has completed successfully</li>
+            <li><strong>fail</strong> - Operation has completed unsuccessfully</li>
+            <li><strong>progress</strong> - Operation has reported a progress update</li>
+          </ul>
         </article>
       </section>
     </main>
