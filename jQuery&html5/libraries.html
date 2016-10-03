@@ -37,42 +37,66 @@
           <img srcset="" src="" alt="">
         </header>
         <article>
-          <h2>JQuery Libraries</h2>
-          <p>These Libraries are build ontop of JQuery</p>
+          <h2>JQuery</h2>
+        </article>
+        <article>
+          <h2>RequireJS</h2>
+          <h3>Modules</h3>
+          <ul>
+            <li>Modules in JavaScript are small units of reusable code</li>
+            <li>Mudules are used to export a value, rather than to define a type</li>
+            <li>Usually export objects, functions or constructors</li>
+            <li>Modules usually belong to a package, which is made of many different modules.</li>
+          </ul>
+          <h3>What is RequireJS than?</h3>
+          <p>So, RequireJS is actually a framework that is able to load different files, and modules onto your JavaScript code.	What you'll be using is a Require keyword.</p>
+          <ul>
+            <li>A framework used to load Javascript files and modules</li>
+            <li>Uses the Asynchronous Modul Definition to load files <br>- Each module starts loading through asynchronous requests in a given order.</li>
+            <li>Can be used with jQuery, Node.js and Dojo</li>
+          </ul>
+          <h3>Two Important Key functions</h3>
           <ul>
             <li>
-              <h3>JQuery UI</h3>
-              <p>All kind of web ui Stuff.</p>
-              <ul>
-                <li>CSS & JavaScript libraries for Web UI <br>-Widgets <br>-CSS <br>-Script</li>
-                <li>Animation</li>
-                <li>Drap and Drop</li>
-              </ul>
-              <p>Check out the Theme Category for generating a complete Theme for your Website.</p>
+              <p><code>require()</code> require() is used to run immediate functionalities. <br>Example</p>
+              <pre>
+                var messages = require('./pathToModule');
+                console.log(messages.getHello());
+              </pre>
             </li>
             <li>
-              <h3>JQuery Mobile</h3>
-              <ul>
-                <li>CSS & Javascript for mobile web development.</li>
-                <li>Touch optimized</li>
-                <li>Data attributes</li>
-                <li>Themes</li>
-              </ul>
+              <p><code>define()</code> define() is used to define modules for use in multiple locations. <br>Example:</p>
+              <pre>
+                define(function() {
+                  getHello: function(){
+                    return 'Hello World';
+                  }
+                });
+              </pre>
             </li>
           </ul>
         </article>
         <article>
-          <h2>Javascript Libraries</h2>
-            <p>TODO Check the following libs</p>
-            <ul>
-              <li>YUI</li>
-              <li>Mootools</li>
-              <li>Prototype</li>
-              <li>momentjs</li>
-              <li>jquery.complexify.js</li>
-              <li>justgage.com</li>
-              <li>three.js</li>
-            </ul>
+          <h2>Other Libraries</h2>
+          <ul>
+            <li>We're not launching rockets here</li>
+            <li>Whatever it is you're doing, someone else has already done it, so take advantage of their work.</li>
+          </ul>
+          <p>Well, that does then raise the question, how do we actually go out and find libraries? Well, <a href="http://microjs.com/">mircojs.com</a> is a great place to start.</p>
+          <h3>What is MVVM</h3>
+          <p>Now the next big thing that comes up quite frequently in the JavaScript world, is these four little letters, MVVM. Or Model-View-ViewModel.</p>
+          <ul>
+            <li>Model-View-ViewModel</li>
+            <li>A framework for automatically updating a UI</li>
+            <li>Several are availiable <br>-Knockout <br>-Angular <br>-Ember <br>-Backbone</li>
+          </ul>
+          <p>well what does it do for you? Well in a nutshell, it will automatically update your UI. So if you have a JavaScript object in memory, and something changes. So maybe the user did something. Maybe with a web socket or a signal R. You got a signal from somewhere else. And Something changed inside of your JavaScript and you wanna be able to automatically update the UI, MVVM can do that.</p>
+          <h3>Where do we go from here?</h3>
+          <ul>
+            <li>Check out jQuery</li>
+            <li>Check out couple of MVVM frameworks</li>
+            <li>Keep practicing</li>
+          </ul>
         </article>
       </section>
     </main>
@@ -82,7 +106,6 @@
         <section id="#">
             <h3>links zu Thema 1</h3>
             <ul>
-                <li><a href="http://jqueryui.com">JQuery ui</a></li>
                 <li><a href="http://microjs.com/">mircojs.com as an overview for small js libs</a></li>
                 <li><a href="https://en.wikipedia.org/wiki/List_of_JavaScript_libraries">Wikipedia List of cool js libs</a></li>
             </ul>
