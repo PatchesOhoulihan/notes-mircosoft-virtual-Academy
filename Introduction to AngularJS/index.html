@@ -53,24 +53,108 @@
                 <li>Handles common (and often trying tasks) such as DOM manipulation, UI updating based on dta or input, registering callbacks.</li>
                 <li>
                     <p>Declarative programming</p>
-                    
+                    <pre>
+                    <code>
+                        &lt;body ng-app="spicyApp2"&gt;
+                            &lt;div ng-controller="SpicyController"&gt;
+                                &lt;input type="text" ng-model="customSpice"&gt;
+                                &lt;button ng-click="spicy('chili')"&gt;Chili&lt;/button&gt;
+                                &lt;button ng-click="spicy(customSpice)"&gt;Custom spice&lt;/button&gt;
+                                &lt;p&gt;The food is{{spice}} spicy&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/body&gt;
+                    </code>
+                    </pre>
+                    <p>The intention of the application is expressed or declared in the HTML for Angular. Instead of JQuery which is only visible in the js Script, so that you don't any idea how the site behaves.</p>
                 </li>
             </ul>
         </article>
         <article>
             <h2>How AngularJS works</h2>
+            <ul>
+                <li>
+                    <p>AngularJS will initialize when the DOM content is loaded.</p>
+                    <img src="img/angular-startup.png" alt="Angular Bootstrap">
+                    <p>Angular uses dependancy injection to make modules more testable and reuseable.</p>
+                    <img src="img/angular-module-injector.png" alt="Angular Dependancy Injection">
+                </li>
+                <li>Looks for the <strong>ng-app</strong> directive - if its found, that is the root of the app</li>
+                <li>Directives can be declared in a varity of ways: typically with the <strong>ng-</strong> prefix, but you can use <strong>data-ng</strong> in case you have to support older Browsers.</li>
+                <li>It will laod the module associated with the directive if specified.</li>
+            </ul>
         </article>
         <article>
             <h2>Hello World AngularJS application</h2>
+            <pre>
+                <code>
+                &lt;!-- WHAT DOES IT DO? Binds everything you type in the inputbox and displays it in the h1 tag --&gt;
+
+                &lt;!--The directive ng-app signales the starting point of the app--&gt;
+                &lt;body ng-app&gt;
+
+                    &lt;!-- Two curlies signals that you're binding an expression. --&gt;
+                    &lt;h1&gt;{{search}}&lt;/h1&gt;
+
+                    &lt;!-- Set the Name of the model --&gt;
+                    &lt;input type="text" ng-model="search"&gt;
+
+                    &lt;!-- Two ways of accessing the Model data --&gt;
+                    &lt;p&gt;{{'Just to be clear here: ' + search}}&lt;/p&gt;
+                    &lt;p&gt;Or this way: {{search}}&lt;/p&gt;
+
+                    &lt;!-- The curly braces work like normal javascript areas --&gt;
+                    &lt;p&gt;The result is: {{1+3}}&lt;/p&gt;
+
+                    &lt;!-- Check if the Frameworks are correct included to the Site --&gt;
+                    &lt;script type="text/javascript"&gt;
+                        console.log('Give me Object, if angular is initialized: ', angular);
+                        console.log('Give me Object, if jquery is initialized:' , $);
+                    &lt;/script&gt;
+                &lt;/body&gt;
+                </code>
+            </pre>
         </article>
         <article>
             <h2>What are AngularJS Modules</h2>
+            <ul>
+                <li>Container for the various parts of your application(controllers, services etc) the building blocks of your app.</li>
+                <li>Declaritive - easy to understand</li>
+                <li>Maintainable, readable, testable</li>
+                <li>Define dependencies for our app</li>
+                <li><a href="https://docs.angularjs.org/api/ng/type/angular.Module">Module API</a></li>
+            </ul>
         </article>
         <article>
             <h2>Creating an AngularJS Module</h2>
+            <ul>
+                <li>A Module is comprised of configuartion and run blocks</li>
+                <li>Configuration blocks(providers) - executed during configuration and registration. Only providers and constants can be passed. Is doing the setup work</li>
+                <li>Run blocks - happen after the injector is created. Only instances and constants can be passed in. runs the actual code.</li>
+                <li>Some convienience methods for this</li>
+                <li>Run blocks is like a main methode - it kickstarts the application</li>
+                <li>Modules can depend on other modules</li>
+                <li>They are only loaded once.</li>
+            </ul>
+            <pre>
+                angular.module('myModule', []).config(function(injectables){
+                    //This is an example of config blocks.
+                    //You can have as many of these as you want.
+                    //You can only inject Providers (not instances)
+                    //into config blocks
+                }).run(function(injectables){
+                    //This is an example of a run block
+                    //You can have as many of these as you want.
+                    //You can only inject Providers (not instances)
+                    //into config blocks
+                });
+                <ul>
+                    <li>Naming convention is lowerCamelCase</li>
+                    <li>Organize by functionality or component type</li>
+                </ul>
+            </pre>
         </article>
         <article>
-            <h2>Module Architecure</h2>
+            <h2>Module Architecture</h2>
         </article>
       </section>
     </main>
@@ -80,7 +164,7 @@
         <section id="#">
             <h3>links zu Thema </h3>
             <ul>
-                <li><a href=""></a></li>
+                <li><a href="https://docs.angularjs.org/api/ng/type/angular.Module">Module API</a></li>
             </ul>
         </section>
     </aside>
