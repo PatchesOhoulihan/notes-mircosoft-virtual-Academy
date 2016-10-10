@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>JavaScript for Experienced Developers - Getting Started</title>
@@ -12,50 +13,107 @@
     <!--[if lt IE 9]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
 
 </head>
+
 <body>
     <div id="site-wrapper">
         <header role="banner" class="pageheader">
-        <h1>Angular Controllers</h1>
-    </header>
-    <nav role="navigation" id="nav" class="navmain">
-      <h2>Navigation</h2>
-      <ul>
-        <li><a href="index.html">About AngularJS, Binding and Modules</a></li>
-        <li><a href="#">Angular Controllers</a></li>
-        <li><a href="expressions-and-filter.html">Expressions & Filter</a></li>
-        <li><a href="directives.html">Directives</a></li>
-        <li><a href="routing-view-management-ui-router.html">Routing, View Management and UI-Router</a></li>
-        <li><a href="factory-provider-services.html">Factory, Provider, Services</a></li>         
-      </ul>
-    </nav>
-
-    <main role="main" aria-labeledby="content">
-      <section>
-        <header>
-          <p>Whats this Chapter about</p>
-          <img srcset="" src="" alt="">
+            <h1>Angular Controllers</h1>
         </header>
-        <article>
-            <h2></h2>
-        </article>
-      </section>
-    </main>
-
-    <aside role="complementary" id="linklisten" class="linklisten">
-        <h2 class="hideme">Linklisten</h2>
-        <section id="#">
-            <h3>links zu Thema </h3>
+        <nav role="navigation" id="nav" class="navmain">
+            <h2>Navigation</h2>
             <ul>
-                <li><a href=""></a></li>
+                <li><a href="index.html">About AngularJS, Binding and Modules</a></li>
+                <li><a href="#">Angular Controllers</a></li>
+                <li><a href="expressions-and-filter.html">Expressions & Filter</a></li>
+                <li><a href="directives.html">Directives</a></li>
+                <li><a href="routing-view-management-ui-router.html">Routing, View Management and UI-Router</a></li>
+                <li><a href="factory-provider-services.html">Factory, Provider, Services</a></li>
             </ul>
-        </section>
-    </aside>
+        </nav>
 
-    <footer role="contentinfo">
-      <h2>Infos über diese Webseite</h2>
-        <small>Copyright &copy; <time datetime="2016">2016</time><a href="#">Impressum</a></small>
-        <address><p>NAME | Straße |  PLZ Ort  |  LAND</p></address>
-    </footer>
+        <main role="main" aria-labeledby="content">
+            <section>
+                <header>
+                    <p>Whats this Chapter about</p>
+                    <img srcset="" src="" alt="">
+                </header>
+                <article>
+                    <h2>What is a Controller</h2>
+                    <ul>
+                        <li>A controller is a set of JavaScript functions bound to a scope</li>
+                        <li>The <strong>ng-controller</strong> directive tells Angular to instantiate the new controller object, and inject the new scope as a dependence</li>
+                        <li>Contain business logic for the view</li>
+                        <li>Best for adding logic</li>
+                        <li>Avoid using to minpulate the DOM</li>
+                    </ul>
+                </article>
+                <article>
+                    <h2>Creating a Controller</h2>
+                    <ul>
+                        <li>Requires <strong>ng-controller</strong> code to a module</li>
+                        <li>Add controller code to a model</li>
+                        <li>Name your controller based on functionality</li>
+                        <li>Controllers are named using camel case(FirstController)</li>
+                        <li>Keep controllers lean</li>
+                    </ul>
+                    <pre>
+                <code>
+                    angular.module('eventModule', [])
+                    .config([function (){
+                        console.log('EventModule::config');
+                    }])
+                    .run([function () {
+
+                    }])
+                    .controller('EventCtrl',['$scope', function($scope){
+                        $scope.title = "Say something for the record, tell the people what you feel";
+                        $scope.menu = [
+                            {
+                                name:"Events",
+                                href:"index.html"
+                            },
+                            {
+                                name: "Contact",
+                                href:"contact.html"
+                            }
+                        ];
+                    }]);
+                </code>
+            </pre>
+                </article>
+                <article>
+                    <h2>What is $scope</h2>
+                </article>
+                <article>
+                    <h2>"Controller as" Syntax</h2>
+                </article>
+                <article>
+                    <h2>Multiple Controller</h2>
+                </article>
+                <article>
+                    <h2>Sharing Data across Controllers</h2>
+                </article>
+            </section>
+        </main>
+
+        <aside role="complementary" id="linklisten" class="linklisten">
+            <h2 class="hideme">Linklisten</h2>
+            <section id="#">
+                <h3>links zu Thema </h3>
+                <ul>
+                    <li>
+                        <a href=""></a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <footer role="contentinfo">
+            <h2>Infos über diese Webseite</h2>
+            <small>Copyright &copy; <time datetime="2016">2016</time><a href="#">Impressum</a></small>
+            <address><p>NAME | Straße |  PLZ Ort  |  LAND</p></address>
+        </footer>
     </div>
 </body>
+
 </html>

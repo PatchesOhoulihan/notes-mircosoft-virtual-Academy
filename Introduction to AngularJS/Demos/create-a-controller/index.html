@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello Angular</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script
+			  src="https://code.jquery.com/jquery-3.1.1.slim.js"
+			  integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA="
+			  crossorigin="anonymous"></script>
+  <script src="mainApp.js"></script>
+</head>
+<!-- WHAT DOES IT DO? Shows how to create a module in Angular -->
+
+<!--The directive ng-app shows that there is somewhere a module with the name mainApp-->
+<body ng-app="mainApp">
+  <nav ng-controller="EventCtrl">
+      <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse">
+              <span class="sr-only">{{title}}</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+      </div>
+  </nav>
+  <!-- Check if the Frameworks are correct included to the Site -->
+  <script type="text/javascript">
+    console.log('Give me Object, if angular is initialized: ', angular);
+    console.log('Give me Object, if jquery is initialized:' , $);
+  </script>
+</body>
+</html>
