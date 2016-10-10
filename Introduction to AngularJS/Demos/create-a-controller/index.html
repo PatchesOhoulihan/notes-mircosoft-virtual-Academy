@@ -8,9 +8,10 @@
 			  src="https://code.jquery.com/jquery-3.1.1.slim.js"
 			  integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA="
 			  crossorigin="anonymous"></script>
-  <script src="mainApp.js"></script>
+  <script src="main.js"></script>
+  <script src="eventModule.js"></script>
 </head>
-<!-- WHAT DOES IT DO? Shows how to create a module in Angular -->
+<!-- WHAT DOES IT DO? Shows how to create a module in Angular use eventModule title property to alter the value of the button -->
 
 <!--The directive ng-app shows that there is somewhere a module with the name mainApp-->
 <body ng-app="mainApp">
@@ -23,7 +24,21 @@
               <span class="icon-bar"></span>
           </button>
       </div>
+      <ul>
+        <!-- Assigns the class active to the Element which is clicked -->
+        <li ng-click="setIndex(0)" ng-class="(index == 0) ? 'active' : ''">
+          <a href="#">{{menu[0].name}}</a>
+        </li>
+        <li ng-click="setIndex(1)" ng-class="(index == 1) ? 'active' : ''">
+          <a href="#">{{menu[1].name}}</a>
+        </li>
+      </ul>
   </nav>
+  <div class="row" ng-controller="EventItemCtrl">
+    <h3>{{itemTitle}}</h3>
+    <p>{{description}}</p>
+
+  </div>
   <!-- Check if the Frameworks are correct included to the Site -->
   <script type="text/javascript">
     console.log('Give me Object, if angular is initialized: ', angular);

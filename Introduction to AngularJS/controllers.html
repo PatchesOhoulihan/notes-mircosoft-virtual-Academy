@@ -41,7 +41,8 @@
                     <h2>What is a Controller</h2>
                     <ul>
                         <li>A controller is a set of JavaScript functions bound to a scope</li>
-                        <li>The <strong>ng-controller</strong> directive tells Angular to instantiate the new controller object, and inject the new scope as a dependence</li>
+                        <li>The <strong>ng-controller</strong> directive tells Angular to instantiate the new controller object,
+                            and inject the new scope as a dependence</li>
                         <li>Contain business logic for the view</li>
                         <li>Best for adding logic</li>
                         <li>Avoid using to minpulate the DOM</li>
@@ -57,7 +58,7 @@
                         <li>Keep controllers lean</li>
                     </ul>
                     <pre>
-                <code>
+                        <code>
                     angular.module('eventModule', [])
                     .config([function (){
                         console.log('EventModule::config');
@@ -79,19 +80,146 @@
                         ];
                     }]);
                 </code>
-            </pre>
+                    </pre>
+                </article>
+                <article>
+                    <h2>Adding Behavior</h2>
+                    <pre>
+                        <code>
+                            angular.module('eventModule', [])
+.config([function (){
+    console.log('EventModule::config');
+}])
+.run([function () {
+
+}])
+.controller('EventCtrl',['$scope', function($scope){
+    $scope.title = "Say something for the record, tell the people what you feel, fuck the record and fuck the people";
+    $scope.menu = [
+        {
+            name:"Events",
+            href:"index.html"
+        },
+        {
+            name: "Contact",
+            href:"contact.html"
+        }
+    ];
+
+    $scope.index = 0;
+
+    $scope.getIndex=function(){
+      return($scope.index);
+    }
+
+    $scope.setIndex=function(val){
+      $scope.index = val;
+    }
+}]);
+                        </code>
+                    </pre>
                 </article>
                 <article>
                     <h2>What is $scope</h2>
+                    <ul>
+                        <li>$scope is an object that refers to the app model</li>
+                        <li>$scope provides the execution context for expression</li>
+                        <li>$scope is the glue between the controller and the view</li>
+                        <li>Attach properties/functions to scope to make them available to the view</li>
+                        <li>Any object or primitives that is added to the $scope are considered model properties</li>
+                    </ul>
+                    <h3>$scope inheritance</h3>
+                    <ul>
+                        <li>You can have nested controllers, Child scopes protypically inherit from the parent scope(controller)</li>
+                        <li>Isolate scopes do not</li>
+                        <li>Javascript Prototypical Inheritance: If it doesn't exists in current $scope it will go up the chain(parent).
+                            Hiding and shadowing of properties</li>
+                        <li>Best practice of always have a '.' in the models</li>
+                        <li><a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">Understanding Scopes</a></li>
+
+                    </ul>
                 </article>
                 <article>
                     <h2>"Controller as" Syntax</h2>
+                    <p>Controller as syntax allows you to basically reference your controller as a variable almost and it really helps you with a lot of scope issues. The other thing that it helps you with is that you no longerneed to use the scope object unless you want to do specific things that the scope object offer</p>
+                    <ul>
+                        <li>Defines a named scope</li>
+                        <li>Defines properties on the function(Controller) and not the $scope</li>
+                        <li>$scopes is still useful for things like $watch (watch to see if a property changes)</li>
+                    </ul>
+                    <p>&lt;nav ng-controller="EventCtrl as event"&gt; <br> &nbsp;&nbsp; &lt;a href&gt;{{event.title}}....</p>
+                    <p>Than use .this instead of $scope in the controller.</p>
+
                 </article>
                 <article>
                     <h2>Multiple Controller</h2>
+                    <pre>
+                        <code>
+                            .controller('EventCtrl', ['$scope', function ($scope) {
+        $scope.title = "Say something for the record, tell the people what you feel, fuck the record and fuck the people";
+        $scope.menu = [
+            {
+                name: "Events",
+                href: "index.html"
+            },
+            {
+                name: "Contact",
+                href: "contact.html"
+            }
+        ];
+
+        $scope.index = 0;
+
+        $scope.getIndex = function () {
+            return ($scope.index);
+        }
+
+        $scope.setIndex = function (val) {
+            $scope.index = val;
+        }
+    }])
+    .controller('EventItemCtrl', ['$scope', function ($scope) {
+        $scope.itemTitle = 'Something completly different';
+        $scope.description = 'Web Devs, if you liked the Introduction to AngularJS session in the Single Page Applications with jQuery or AngularJS course, roll up your sleeves for even more coding fun! Back by popular demand, experts Stacey Mulcahy and Christopher Harris';
+        $scope.imgSrc = "assets/img/toThepic.jpg";
+        $scope.date = "January 24, 2015";
+    }])
+                        </code>
+                    </pre>
                 </article>
                 <article>
                     <h2>Sharing Data across Controllers</h2>
+                    <p>Use a factory</p>
+                    <pre>
+                        <code>
+                            angular.module('eventModule', [])
+                            .factory('MainTitle', [function () {
+                                return {
+                                    //MainTitle is the name of the function and than a callback
+                                    title:"Young Game Maker";
+                                }
+                            }])
+                            .config([function (){
+                                console.log('EventModule::config');
+                            }])
+                            .run([function () {
+
+                            }])
+                            .controller('EventCtrl'[$scope', 'Maintitle' ,function($scope, mainTitle){
+                                //Injects the mainTitle Object into the controller
+                                 $scope.title = mainTitle.title;
+                                 $scope.menu = [
+                                {
+                                    name:"Events",
+                                    href:"index.html"
+                                },
+                                {
+                                    name: "Contact",
+                                    href:"contact.html"
+                                }
+                            }])
+                        </code>
+                    </pre>
                 </article>
             </section>
         </main>
@@ -102,7 +230,7 @@
                 <h3>links zu Thema </h3>
                 <ul>
                     <li>
-                        <a href=""></a>
+                        <a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">Understanding Scopes</a>
                     </li>
                 </ul>
             </section>
@@ -111,7 +239,9 @@
         <footer role="contentinfo">
             <h2>Infos über diese Webseite</h2>
             <small>Copyright &copy; <time datetime="2016">2016</time><a href="#">Impressum</a></small>
-            <address><p>NAME | Straße |  PLZ Ort  |  LAND</p></address>
+            <address>
+                <p>NAME | Straße | PLZ Ort | LAND</p>
+            </address>
         </footer>
     </div>
 </body>

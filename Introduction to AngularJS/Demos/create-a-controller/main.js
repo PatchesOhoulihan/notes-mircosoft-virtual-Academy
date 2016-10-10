@@ -1,4 +1,4 @@
-angular.module('mainApp', [eventModule])
+angular.module('mainApp', ['eventModule'])
 .config([function(){
 
 }])
