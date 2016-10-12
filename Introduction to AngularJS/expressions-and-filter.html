@@ -51,15 +51,37 @@
             <p>Take a look at the Cheatsheet:</p>
             <img src="img/angular_expressions_cheatsheet.png" alt="Angular expression Cheatsheet">
             <h3>It is possible to do a onetime bind</h3>
+            <p>For Elements which get bind one time and than never change.</p>
             <p>
                 Think of a header on a page. That's not going to change. It's always going to be the same header but maybe you need to dynamically populate it for whatever reason. So maybe it's coming from the NAV and the NAV has something associated with it. You got... whatever it may be. You know it's not going to change. You maybe just want to bind that once so that when that whole module runs, gets configured and then runs and that link is made, then it just does it once and it's not worried about watching that item all the time.
             </p>
+            <p>Syntax: <br> <code>&lt;a&gt; href="#"&gt;{{::event}}&lt;/a&gt;</code></p>
         </article>
          <article>
             <h2>Using Expressions</h2>
         </article> 
         <article>
             <h2>What are Filters</h2>
+            <p> Basically filters format the value of an expression is the easiest way to think of them. </p>
+            <p> You can use it in the view but you can use them in controllers and services and so a prime example might be you have a service that goes out and it gets a data feed and when it comes back you're going to want to sort that data feed on a certain property before it gets populated to the view.</p>
+            <ul>
+                <li>Formats the value of an expression</li>
+                <li>Filters can be applied in the view <code>{{employees.array | filtername: '...'</code></li>
+                <li>Filters applied in the view can be costly as they are re-evaluated.</li>
+                <li>Filters can be used elsewhere: controllers, sevices etc.</li>
+            </ul>
+            <h3>Buildin Filters</h3>
+            <ul>
+                <li>orderBy</li>
+                <li>limitTo</li>
+                <li>lowercase and uppercase</li>
+                <li>filter</li>
+                <li>currency</li>
+                <li>number</li>
+                <li>date</li>
+            </ul>
+            <p>Example: <br> <code>&lt;div ng-repeat="item in event.events | orderBy: 'date' | limitTo: '2'" ..... &gt;</code></p>
+            <p>The Example gets all elements in the event array and order it by 'date' and limit the output to two elements</p>
         </article>
          <article>
             <h2>Using Filter</h2>
