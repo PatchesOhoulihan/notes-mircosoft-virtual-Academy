@@ -57,9 +57,6 @@
             </p>
             <p>Syntax: <br> <code>&lt;a&gt; href="#"&gt;{{::event}}&lt;/a&gt;</code></p>
         </article>
-         <article>
-            <h2>Using Expressions</h2>
-        </article> 
         <article>
             <h2>What are Filters</h2>
             <p> Basically filters format the value of an expression is the easiest way to think of them. </p>
@@ -84,10 +81,24 @@
             <p>The Example gets all elements in the event array and order it by 'date' and limit the output to two elements</p>
         </article>
          <article>
-            <h2>Using Filter</h2>
-        </article>
-         <article>
             <h2>Creating a Custom Filter</h2>
+            <ul>
+                <li>Register a new filter factory function</li>
+                <li>Return a filter function that takes the input value as the first argument.</li>
+                <li>Filter function should be stateless(typically)</li>
+            </ul>
+            <p>Example: <br> <code>
+                    angular.module('eventModule', [])
+                    .factory('MainTitle', [function (){
+                    
+                    }])
+                    .filter('searchCity', function(){
+                        return function(item, search){
+
+                            //
+                        }
+                    }):
+                </code></p>
         </article>
       </section>
     </main>
